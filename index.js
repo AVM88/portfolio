@@ -177,7 +177,7 @@ function portfolioComponent () {
   `
   function template () {
     return yo`
-    <div onmouseover=${hoverPortfolio}>
+    <div onmouseover=${hoverPortfolio} >
       <div class="${css.portfolio}">
         <div class="${css.portfolioItem}">
           <div class="${css.portfolioTitle}">
@@ -196,13 +196,9 @@ function portfolioComponent () {
 
 }
 
-     var element = template()
-    return element
-
     function hoverPortfolio () {
-     var element = this
     var newElement = yo`
-    <div onmouseout=${unhoverPortfolio}> oneclick=${openNewTab}>
+    <div onmouseout=${unhoverPortfolio} onclick=${openNewTab}>
         <div class="${css.portfolio}">
           <div class="${css.portfolioItem_isHover}">
             <div class="${css.portfolioTitle_isHover}">
@@ -220,20 +216,15 @@ function portfolioComponent () {
     `
     yo.update(element, newElement)
     }
-
-    function unhoverPortfolio() {
-    var element = this
-    var newElement = template()
-    yo.update(element,newElement)
-
+    function unhoverPortfolio() {yo.update(element, template())}
+    function openNewTab() {
+      var url = 'https://avm88.github.io/quiz/'
+      var tab = window.open(url, '_blank')
+      tab.focus()
+    }
+    var element = template()
+	  return element
 }
-  function openNewTab() {
-    var url = ''
-    var win = window.open(url, '_blank');
-    win.focus();
-  }
-}
-
 /*--------------------------------------------------------------------------------
   TEXTBOX COMPONENT
 --------------------------------------------------------------------------------*/
